@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "gitOrderDB",
+    "database": "gitOrder",
     "host": "localhost",
     "dialect": "mysql"
   },
