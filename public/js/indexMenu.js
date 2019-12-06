@@ -34,14 +34,16 @@ var API = {
 var refreshOrders = function() {
   API.getOrders().then(function(data) {
     var $orders = data.map(function(order) {
-      var $p = `<p>Item: ${order.Item}</p><p>Price: ${order.Cost}</p><p>Quantity: ${order.Quantity}</p><p>Status: ${order.Status}</p>`
-      
+      var $a = $("<a>")
+        .text(order.text)
+        .attr("href", "/orders/" + order.id);
+
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
           "data-id": order.id
         })
-        .append($p);
+        .append($a);
 
       var $button = $("<button>")
         .addClass("btn btn-danger float-right delete")
