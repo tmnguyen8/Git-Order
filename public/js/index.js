@@ -34,7 +34,7 @@ var API = {
 var refreshOrders = function() {
   API.getOrders().then(function(data) {
     var $orders = data.map(function(order) {
-
+      console.log(order)
 
       var $p = `<p>Item: ${order.Menu_Name}</p><p>Price: ${order.Cost}</p><p>Quantity: ${order.Quantity}</p><p>Status: ${order.Status}</p>`
       
