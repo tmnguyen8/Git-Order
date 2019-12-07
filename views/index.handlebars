@@ -4,7 +4,7 @@
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
         <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
+        {{!-- <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <label for="order-item">Order Item</label>
             <input type="text" id="order-item" class="form-control" aria-describedby="order-item" placeholder="Enter Order Item">
@@ -14,16 +14,20 @@
             <textarea class="form-control" id="order-quantity" aria-describedby="order-quantity" placeholder="Enter Order Quantity"></textarea>
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        {{!-- <h3>Menu:</h3>
+        </form> --}}
+
+        {{!-- Displaying Menus --}}
+        <h3>Menu:</h3>
         <ul id="menu-list" class="list-group">
-          {{#each Item}}
+          {{#each menu}}
           <li data-id="{{this.id}}" class="list-group-item">
             <a href="item/{{this.id}}">{{this.text}}</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
-          </li> --}}
-          {{!-- {{/each}}
-        </ul> --}}
+          </li>
+          {{/each}}
+        </ul>
+
+        {{!-- Displaying Orders --}}
         <h3>Orders:</h3>
         <ul id="item-list" class="list-group">
           {{#each orders}}
@@ -40,3 +44,4 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
+<script src="/js/indexMenu.js"></script>

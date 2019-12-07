@@ -2,10 +2,29 @@
 var $orderItem = $("#order-item");
 var $orderQuantity = $("#order-quantity");
 var $submitBtn = $("#submit");
-var $itemList = $("#item-list");
+var $menuList = $("#menu-list");
+var $submitOrderBtn = $("#submit-order");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
+  getMenu: function() {
+    return $.ajax({
+      url: "api/menu",
+      type: "GET"
+    });
+  },
+  getMenuById: function(id) {
+    return $.ajax({
+      url: "api/menu/"+id,
+      type: "GET"
+    });
+  },
+  deleteMenu: function(id) {
+    return $.ajax({
+      url: "api/menu/" + id,
+      type: "DELETE"
+    });
+  },
   saveOrder: function(order) {
     return $.ajax({
       headers: {
@@ -31,35 +50,50 @@ var API = {
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshOrders = function() {
-  API.getOrders().then(function(data) {
-    var $orders = data.map(function(order) {
-      var $p = `<p>Item: ${order.Item}</p><p>Price: ${order.Cost}</p><p>Quantity: ${order.Quantity}</p><p>Status: ${order.Status}</p>`
+var refreshMenu = function() {
+  API.getMenu().then(function(data) {
+    var $menu = data.map(function(menu) {
+      console.log(menu);
+
+      var $p = `<p>Menu Item: ${menu.Name}</p>
+      <p>Ingredients: ${menu.Ingredients}</p>
+      <p>Cost: ${menu.Cost}</p>`;
       
+      // list of menu items given the data-id from menu_id
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": order.id
+          id: "order-item",
+          "data-id": menu.id,
+          "data-cost": menu.Cost,
+          "data-name": menu.Name
         })
         .append($p);
+      
+      // Input box for the order quantity from menu
+      var $input = `
+        <span>Quantity (between 1 and 10): </span> <input type="number" id="order-quantity menu-id-${menu.id}" name="quantity" min="1" max="10">
+      `;
+      $li.append($input);
 
       var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+        .addClass("btn btn-danger float-right order")
+        .text("Order");
 
       $li.append($button);
 
       return $li;
     });
 
-    $itemList.empty();
-    $itemList.append($orders);
+
+    $menuList.empty();
+    $menuList.append($menu);
   });
 };
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
+var handleOrderSubmit = function(event) {
   event.preventDefault();
 
   var order = {
@@ -83,16 +117,38 @@ var handleFormSubmit = function(event) {
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
+var handleOrderBtnClick = function() {
+  var idToOrder = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteOrder(idToDelete).then(function() {
-    refreshOrders();
+  var menuNameToOrder = $(this).parent().attr("data-name")
+
+  var costItemToOrder = $(this).parent().attr("data-cost");
+
+  var quantityToOrder = $(this).parent().find('input').val();
+  
+  var order = {
+    Cost: costItemToOrder * quantityToOrder,
+    Quantity: quantityToOrder,
+    Status: "Order Received.",
+    Menu_Id: idToOrder,
+    Menu_Name: menuNameToOrder
+  };
+
+  if (!(order.Menu_Id && order.Quantity)) {
+    alert("You must order a valid item and quantity!");
+    return;
+  };
+
+  API.saveOrder(order).then(function() {
+    console.log("saved order successfully")
   });
 };
 
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$itemList.on("click", ".delete", handleDeleteBtnClick);
+
+// Add event listeners to the submit order
+$menuList.on("click", ".order", handleOrderBtnClick);
+
+// loading menus
+refreshMenu();
