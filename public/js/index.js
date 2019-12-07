@@ -36,7 +36,7 @@ var refreshOrders = function() {
     var $orders = data.map(function(order) {
       console.log(order)
 
-      var $p = `<p>Item: ${order.Menu_Name}</p><p>Price: ${order.Cost}</p><p>Quantity: ${order.Quantity}</p><p>Status: ${order.Status}</p>`
+      var $p = `<p class="col-4">Item: ${order.Menu_Name}</p><p class="col-1">Price: ${order.Cost}</p><p class="col-1">Quantity: ${order.Quantity}</p><p class="col-6">Status: ${order.Status}</p>`
       
       var $li = $("<li>")
         .attr({

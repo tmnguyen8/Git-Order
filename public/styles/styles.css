@@ -1,3 +1,23 @@
 .list-group-item {
   line-height: 2.5;
+  background: rgba(83, 46, 12, 0.548);
+  color: whitesmoke;
+  width: 125%;
+  height: 15%;
+  float: right;
 }
+body {
+  background-image: url("./Background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.list-group{
+  width: 100%;
+  offset-position: -25%;
+}
+.btn{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+

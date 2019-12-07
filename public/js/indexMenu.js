@@ -55,9 +55,9 @@ var refreshMenu = function() {
     var $menu = data.map(function(menu) {
       console.log(menu);
 
-      var $p = `<p>Menu Item: ${menu.Name}</p>
-      <p>Ingredients: ${menu.Ingredients}</p>
-      <p>Cost: ${menu.Cost}</p>`;
+      var $p = `<div class="row"><p class="col-3">Menu Item: ${menu.Name}</p>
+      <p class="col-6">Ingredients: ${menu.Ingredients}</p>
+      <p class="col-1">Cost: ${menu.Cost}</p></div>`;
       
       // list of menu items given the data-id from menu_id
       var $li = $("<li>")
@@ -72,7 +72,7 @@ var refreshMenu = function() {
       
       // Input box for the order quantity from menu
       var $input = `
-        <span>Quantity (between 1 and 10): </span> <input type="number" id="order-quantity menu-id-${menu.id}" name="quantity" min="1" max="10">
+        <input class="float-right col-2" type="number" id="order-quantity menu-id-${menu.id}" name="quantity" min="1" max="10" placeholder="Quantity">
       `;
       $li.append($input);
 
