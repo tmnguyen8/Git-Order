@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     db.Menu.findAll({}).then(function(dbMenus) {
       res.render("index", {
-        msg: "Welcome!",
+        msg: "Welcome to Git Order",
         Menus: dbMenus
       });
     });
@@ -15,7 +15,7 @@ module.exports = function(app) {
   app.get("/production", function(req, res) {
     db.Order.findAll({}).then(function(dbOrder) {
       res.render("production", {
-        msg: "Welcome!",
+        msg: "Git Order's Admin Page",
         Menus: dbOrder
       });
     });
