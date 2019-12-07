@@ -1,9 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
     var Order = sequelize.define("Order", {
-      Item: DataTypes.STRING,
       Cost: DataTypes.INTEGER,
       Quantity: DataTypes.INTEGER,
-      Status: DataTypes.STRING
+      Status: DataTypes.STRING,
+      Menu_Id: DataTypes.INTEGER,
+      Menu_Name: DataTypes.STRING
     });
     return Order;
   };

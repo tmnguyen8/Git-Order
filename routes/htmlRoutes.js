@@ -11,6 +11,16 @@ module.exports = function(app) {
     });
   });
 
+  // Load Order Mangement Page
+  app.get("/production", function(req, res) {
+    db.Order.findAll({}).then(function(dbOrder) {
+      res.render("production", {
+        msg: "Welcome!",
+        Menus: dbOrder
+      });
+    });
+  });
+
   // Load Menu page and pass in an Menu by id
   app.get("/Menu/:id", function(req, res) {
     db.Menu.findOne({ where: { id: req.params.id } }).then(function(dbMenu) {

@@ -7,6 +7,13 @@ module.exports = function(app) {
       res.json(dbMenu);
     });
   });
+  app.get("/api/menu/:id", function(req, res) {
+    db.Menu.findOne({}).then(function(dbMenu) {
+      res.json(dbMenu);
+    });
+  });
+
+  // Get Orders
   app.get("/api/orders", function(req, res) {
     db.Order.findAll({}).then(function(dbOrder) {
       res.json(dbOrder);
