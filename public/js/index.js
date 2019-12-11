@@ -1,3 +1,4 @@
+// This javascript page supports the orders read, create and delete
 // Get references to page elements
 var $orderItem = $("#order-item");
 var $orderQuantity = $("#order-quantity");
@@ -36,7 +37,50 @@ var refreshOrders = function() {
     var $orders = data.map(function(order) {
       console.log(order)
 
-      var $p = `<p class="col-4">Item: ${order.Menu_Name}</p><p class="col-1">Price: ${order.Cost}</p><p class="col-1">Quantity: ${order.Quantity}</p><p class="col-6">Status: ${order.Status}</p>`
+      // Determine the status of the order using switch cases
+      // Order Received // Order Processing // Order on the Way // Order Complete // Out of Stock// Order Canceled
+      switch (order.Status) {
+        case ('Order Received'):
+          var $statusBar= `<div class="progress-bar" style="width:25%;">${order.Status}</div>`;
+          break;
+        case ('Order Processing'):
+          var $statusBar= `
+            <div class="progress-bar " style="width:25%;">Order Received</div>
+            <div class="progress-bar bg-success" style="width:25%;">${order.Status}</div>
+          `;
+          break;
+        case ('Order Processing'):
+            var $statusBar= `
+              <div class="progress-bar" style="width:25%;">Order Received</div>
+              <div class="progress-bar bg-success" style="width:25%;">Order Processing</div>
+              <div class="progress-bar bg-warning" style="width:25%;">${order.Status}</div>
+            `;
+          break;
+        case ('Order Complete'):
+            var $statusBar= `
+              <div class="progress-bar" style="width:25%;">Order Received</div>
+              <div class="progress-bar bg-success" style="width:25%;">Order Processing</div>
+              <div class="progress-bar bg-warning" style="width:25%;">Order on the Way</div>
+              <div class="progress-bar progress-bar-info" style="width:25%;">${order.Status}</div>
+            `;
+          break;
+        case ('Out of Stock'):
+            var $statusBar= `<div class="progress-bar bg-danger" style="width:100%;">${order.Status}</div>`;
+          break;
+        case ('Order Canceled'):
+            var $statusBar= `<div class="progress-bar bg-danger" style="width:100%;">${order.Status}</div>`;
+          break;
+      };
+
+      // displaying orders
+      var $p = `
+      <div class="row">
+        <p class="col-4">Item: ${order.Menu_Name}</p>
+        <p class="col-4">Price: ${order.Cost}</p>
+        <p class="col-4">Quantity: ${order.Quantity}</p>
+      </div>
+      <div class="progress">${$statusBar}</div>
+      `;
       
       var $li = $("<li>")
         .attr({
@@ -45,11 +89,11 @@ var refreshOrders = function() {
         })
         .append($p);
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+      // var $button = $("<button>")
+      //   .addClass("btn btn-danger float-right delete")
+      //   .text("ｘ");
 
-      $li.append($button);
+      // $li.append($button);
 
       return $li;
     });
@@ -67,7 +111,7 @@ var handleFormSubmit = function(event) {
   var order = {
     Item: $orderItem.val().trim(),
     Quantity: $orderQuantity.val().trim(),
-    Status: "Order Received."
+    Status: "Order Received"
   };
 
   if (!(order.Item && order.Quantity)) {

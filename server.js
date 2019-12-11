@@ -54,7 +54,7 @@ module.exports = app;
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
-}
+};
 
 const bcrypt = require('bcrypt')
 const passport = require('passport')

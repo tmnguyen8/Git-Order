@@ -46,8 +46,51 @@ var refreshOrders = function() {
   API.getOrders().then(function(data) {
     var $orders = data.map(function(order) {
         console.log(order)
+      // Determine the status of the order using switch cases
+      // Order Received // Order Processing // Order on the Way // Order Complete // Out of Stock// Order Canceled
+      switch (order.Status) {
+        case ('Order Received'):
+          var $statusBar= `<div class="progress-bar" style="width:25%;">${order.Status}</div>`;
+          break;
+        case ('Order Processing'):
+          var $statusBar= `
+            <div class="progress-bar " style="width:25%;">Order Received</div>
+            <div class="progress-bar bg-success" style="width:25%;">${order.Status}</div>
+          `;
+          break;
+        case ('Order Processing'):
+            var $statusBar= `
+              <div class="progress-bar" style="width:25%;">Order Received</div>
+              <div class="progress-bar bg-success" style="width:25%;">Order Processing</div>
+              <div class="progress-bar bg-warning" style="width:25%;">${order.Status}</div>
+            `;
+          break;
+        case ('Order Complete'):
+            var $statusBar= `
+              <div class="progress-bar" style="width:25%;">Order Received</div>
+              <div class="progress-bar bg-success" style="width:25%;">Order Processing</div>
+              <div class="progress-bar bg-warning" style="width:25%;">Order on the Way</div>
+              <div class="progress-bar progress-bar-info" style="width:25%;">${order.Status}</div>
+            `;
+          break;
+        case ('Out of Stock'):
+            var $statusBar= `<div class="progress-bar bg-danger" style="width:100%;">${order.Status}</div>`;
+          break;
+        case ('Order Canceled'):
+            var $statusBar= `<div class="progress-bar bg-danger" style="width:100%;">${order.Status}</div>`;
+          break;
+      };
 
-        var $p = `<p>Item: ${order.Menu_Name}</p><p>Price: ${order.Cost}</p><p>Quantity: ${order.Quantity}</p><p>Status: ${order.Status}</p>`
+      // displaying orders
+      var $p = `
+      <div class="row">
+        <p class="col-4">Item: ${order.Menu_Name}</p>
+        <p class="col-4">Price: ${order.Cost}</p>
+        <p class="col-4">Quantity: ${order.Quantity}</p>
+      </div>
+      <p>Status</p>
+      <div class="progress">${$statusBar}</div>
+      `;
       
         var $statusDropDown = 
         `<select name="order-status">
@@ -55,8 +98,8 @@ var refreshOrders = function() {
             <option value="Order Processing">Order Processing</option>
             <option value="Order on the Way">Order on the Way</option>
             <option value="Order Complete">Order Complete</option>
+            <option value="Order Canceled">Order Canceled</option>
             <option value="Out of Stock">Out of Stock</option>
-            <option value="Ordered Canceled">Ordered Canceled</option>
         </select>`
 
         var $li = $("<li>")
