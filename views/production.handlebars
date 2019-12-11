@@ -1,12 +1,19 @@
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+<!-- Navbar content -->
+  <a href="./">Home</a>
+  <form action="/logout?_method=DELETE" method="post">
+    <button type="submit">Log Out</button>
+  </form>
+</nav>
+
+
 <div id="production">
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
         <h2>Order Management!</h2>
-<form action="/logout?_method=DELETE" method="post">
-    <button type="submit">Log Out</button>
-</form>
 
         {{!-- Displaying Orders --}}
         <h3>Orders:</h3>

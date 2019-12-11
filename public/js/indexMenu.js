@@ -55,9 +55,12 @@ var refreshMenu = function() {
     var $menu = data.map(function(menu) {
       console.log(menu);
 
-      var $p = `<div class="row"><p class="col-3">Menu Item: ${menu.Name}</p>
+      var $p = `<div class="row menu-item">
+      <p class="col-3">Menu Item: ${menu.Name}</p>
       <p class="col-6">Ingredients: ${menu.Ingredients}</p>
-      <p class="col-1">Cost: ${menu.Cost}</p></div>`;
+      <p class="col-1">Cost: ${menu.Cost}</p>
+      <img src='${menu.URL}' class="menu-image">
+      </div>`;
       
       // list of menu items given the data-id from menu_id
       var $li = $("<li>")
