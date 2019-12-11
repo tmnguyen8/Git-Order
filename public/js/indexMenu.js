@@ -55,11 +55,30 @@ var refreshMenu = function() {
     var $menu = data.map(function(menu) {
       console.log(menu);
 
-      var $p = `<div class="row menu-item">
-      <p class="col-3">Menu Item: ${menu.Name}</p>
-      <p class="col-6">Ingredients: ${menu.Ingredients}</p>
-      <p class="col-1">Cost: ${menu.Cost}</p>
-      <img src='${menu.URL}' class="menu-image">
+      // Input box to enter quantity to order
+      var $input = `
+        <input class="order-quantity" type="number" id="order-quantity menu-id-${menu.id}" name="quantity" min="1" max="10" placeholder="Quantity">
+      `;
+
+      // submit button to order
+      var $button = `<button class="btn btn-danger order">Order</button>`;
+      
+
+      var $p = `
+      <div class="row menu-item">
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+          <img src='${menu.URL}' class="menu-image">
+        </div>
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 col-xl-7">
+          <p class="menu-item">Menu Item: ${menu.Name}</p>
+          <p class="menu-ingredients">Ingredients: ${menu.Ingredients}</p>
+          <p class="menu-cost">Cost: ${menu.Cost}</p>
+        </div>
+        <div class='col-xs-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 order-form'>
+          ${$input}
+          <br />
+          ${$button}
+        </div>
       </div>`;
       
       // list of menu items given the data-id from menu_id
@@ -72,18 +91,6 @@ var refreshMenu = function() {
           "data-name": menu.Name
         })
         .append($p);
-      
-      // Input box for the order quantity from menu
-      var $input = `
-        <input class="float-right col-2" type="number" id="order-quantity menu-id-${menu.id}" name="quantity" min="1" max="10" placeholder="Quantity">
-      `;
-      $li.append($input);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right order")
-        .text("Order");
-
-      $li.append($button);
 
       return $li;
     });
@@ -102,7 +109,7 @@ var handleOrderSubmit = function(event) {
   var order = {
     Item: $orderItem.val().trim(),
     Quantity: $orderQuantity.val().trim(),
-    Status: "Order Received."
+    Status: "Order Received"
   };
 
   if (!(order.Item && order.Quantity)) {
@@ -134,7 +141,7 @@ var handleOrderBtnClick = function() {
   var order = {
     Cost: costItemToOrder * quantityToOrder,
     Quantity: quantityToOrder,
-    Status: "Order Received.",
+    Status: "Order Received",
     Menu_Id: idToOrder,
     Menu_Name: menuNameToOrder
   };
