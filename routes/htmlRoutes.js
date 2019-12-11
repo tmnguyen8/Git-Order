@@ -12,14 +12,14 @@ module.exports = function(app) {
   });
 
   // Load Order Mangement Page
-  app.get("/production", function(req, res) {
-    db.Order.findAll({}).then(function(dbOrder) {
-      res.render("production", {
-        msg: "Git Order's Admin Page",
-        Menus: dbOrder
-      });
-    });
-  });
+  // app.get("/production", function(req, res) {
+  //   db.Order.findAll({}).then(function(dbOrder) {
+  //     res.render("production", {
+  //       msg: "Git Order's Admin Page",
+  //       Menus: dbOrder
+  //     });
+  //   });
+  // });
 
   // Load Menu page and pass in an Menu by id
   app.get("/Menu/:id", function(req, res) {
@@ -31,7 +31,7 @@ module.exports = function(app) {
   });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    res.render("404");
-  });
+  // app.get("*", function(req, res) {
+  //   res.render("404");
+  // });
 };
