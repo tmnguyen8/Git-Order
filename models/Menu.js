@@ -3,6 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     Name: DataTypes.STRING,
     Ingredients: DataTypes.STRING,
     Cost: DataTypes.INTEGER,
+    URL: DataTypes.TEXT
   },
   {timestamps: false}
   );
