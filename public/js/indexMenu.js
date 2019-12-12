@@ -61,7 +61,7 @@ var refreshMenu = function() {
       `;
 
       // submit button to order
-      var $button = `<button class="btn btn-danger order">Order</button>`;
+      var $button = `<button class="btn btn-danger order" id="order-item" data-id="${menu.id}" data-cost="${menu.Cost}" data-name="${menu.Name}">Order</button>`;
       
 
       var $p = `
@@ -128,13 +128,11 @@ var handleOrderSubmit = function(event) {
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
 var handleOrderBtnClick = function() {
-  var idToOrder = $(this)
-    .parent()
-    .attr("data-id");
+  var idToOrder = $(this).attr("data-id");
 
-  var menuNameToOrder = $(this).parent().attr("data-name")
+  var menuNameToOrder = $(this).attr("data-name")
 
-  var costItemToOrder = $(this).parent().attr("data-cost");
+  var costItemToOrder = $(this).attr("data-cost");
 
   var quantityToOrder = $(this).parent().find('input').val();
   
@@ -145,6 +143,7 @@ var handleOrderBtnClick = function() {
     Menu_Id: idToOrder,
     Menu_Name: menuNameToOrder
   };
+  console.log(order)
 
   if (!(order.Menu_Id && order.Quantity)) {
     alert("You must order a valid item and quantity!");

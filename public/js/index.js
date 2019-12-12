@@ -105,27 +105,27 @@ var refreshOrders = function() {
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  event.preventDefault();
+// var handleFormSubmit = function(event) {
+//   event.preventDefault();
 
-  var order = {
-    Item: $orderItem.val().trim(),
-    Quantity: $orderQuantity.val().trim(),
-    Status: "Order Received"
-  };
+//   var order = {
+//     Item: $orderItem.val().trim(),
+//     Quantity: $orderQuantity.val().trim(),
+//     Status: "Order Received"
+//   };
 
-  if (!(order.Item && order.Quantity)) {
-    alert("You must enter an item and quantity!");
-    return;
-  }
+//   if (!(order.Item && order.Quantity)) {
+//     alert("You must enter an item and quantity!");
+//     return;
+//   }
 
-  API.saveOrder(order).then(function() {
-    refreshOrders();
-  });
+//   API.saveOrder(order).then(function() {
+//     refreshOrders();
+//   });
 
-  $orderItem.val("");
-  $orderQuantity.val("");
-};
+//   $orderItem.val("");
+//   $orderQuantity.val("");
+// };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
@@ -140,7 +140,7 @@ var handleDeleteBtnClick = function() {
 };
 
 // Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
+// $submitBtn.on("click", handleFormSubmit);
 $itemList.on("click", ".delete", handleDeleteBtnClick);
 
 

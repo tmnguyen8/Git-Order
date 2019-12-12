@@ -32,14 +32,14 @@ module.exports = function(app) {
     });
   });
 
-  // app.put("/api/orders/:id", function(req, res) {
-  //   db.Order.update({ 
-  //     where: { id: req.params.id },
-  //     Status: req.body
-  //    }).then(function(dbOrder) {
-  //     res.json(dbOrder);
-  //   });
-  // });
+  app.put("/api/orders/:id", function(req, res) {
+    db.Order.update({ 
+      where: { id: req.params.id },
+      Status: req.body
+     }).then(function(dbOrder) {
+      res.json(dbOrder);
+    });
+  });
 
   app.put("/api/orders", function(req, res) {
     db.Order.update(

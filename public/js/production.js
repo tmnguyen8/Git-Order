@@ -58,7 +58,7 @@ var refreshOrders = function() {
             <div class="progress-bar bg-success" style="width:25%;">${order.Status}</div>
           `;
           break;
-        case ('Order Processing'):
+        case ('Order on the Way'):
             var $statusBar= `
               <div class="progress-bar" style="width:25%;">Order Received</div>
               <div class="progress-bar bg-success" style="width:25%;">Order Processing</div>
@@ -170,6 +170,7 @@ var handleStatusBtnClick = function() {
         id: idStatus,
         Status: newStatus
     };
+    console.log("order status",order)
 
   API.updateOrders(order).then(function() {
     refreshOrders();
