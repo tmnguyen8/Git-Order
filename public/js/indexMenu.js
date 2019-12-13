@@ -57,7 +57,7 @@ var refreshMenu = function() {
 
       // Input box to enter quantity to order
       var $input = `
-        <input class="order-quantity" type="number" id="order-quantity menu-id-${menu.id}" name="quantity" min="1" max="10" placeholder="Quantity">
+        <input class="order-quantity" type="number" id="order-quantity menu-id-${menu.id}" name="quantity" min="1" max="10" placeholder="Qty:">
       `;
 
       // submit button to order
@@ -66,13 +66,13 @@ var refreshMenu = function() {
 
       var $p = `
       <div class="row menu-item">
-        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+        <div class="col-md-12 col-lg-3 col-xl-3">
           <img src='${menu.URL}' class="menu-image">
         </div>
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 col-xl-7">
           <p class="menu-item">Menu Item: ${menu.Name}</p>
           <p class="menu-ingredients">Ingredients: ${menu.Ingredients}</p>
-          <p class="menu-cost">Cost: ${menu.Cost}</p>
+          <p class="menu-cost">Cost: $${menu.Cost}</p>
         </div>
         <div class='col-xs-12 col-sm-2 col-md-2 col-lg-2 col-xl-2 order-form'>
           ${$input}
@@ -82,7 +82,7 @@ var refreshMenu = function() {
       </div>`;
       
       // list of menu items given the data-id from menu_id
-      var $li = $("<li>")
+      var $li = $("<div>")
         .attr({
           class: "list-group-item",
           id: "order-item",

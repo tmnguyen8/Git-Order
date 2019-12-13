@@ -3,7 +3,11 @@
     body {
         color:black;
         text-align: center;
+        background-color: rgb(123,86,70);
     };
+    .input {
+        border: 1px solid black;
+    }
 </style>
 
 <h1>Login</h1>
@@ -13,12 +17,12 @@
 
 <form action="/login" method="POST">
     <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+        <label for="email">Email:</label>
+        <input class="input" type="email" id="email" name="email" required>
     </div>
     <div>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
+        <label for="password">Password:</label>
+        <input class="input" type="password" id="password" name="password" required>
     </div>
     <button class="btn btn-primary" type="submit">Login</button>
     
