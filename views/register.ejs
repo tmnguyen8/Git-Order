@@ -1,31 +1,45 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <style>
     body {
-        color:black;
         text-align: center;
-        background-color: rgb(123,86,70);
+        background-image: url("./images/Background.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
     };
-    .input {
-        border: 1px solid black;
+    .input-box {
+        background: rgb(146, 118, 91);
+        border-color: peachpuff;
+        color: whitesmoke;
+        text-align: center;
+        border-radius: 10px;
+        width: 75%;
+        margin-bottom: 10px;
+    }
+    .jumbotron {
+        margin: auto 10%;
+        background: rgba(83, 46, 12, 0.548);
+        color: peachpuff;
     }
 </style>
+<div class="header">
+    <img class="logo" src="./images/logo.png">
+</div>
 
-
-<h1>Register</h1>
-<form action="/register" method="POST">
+<form class="jumbotron" action="/register" method="POST">
+    <h1>Register</h1>
     <div>
         <label for="name">Name:</label>
-        <input class="input" type="text" id="name" name="name" required>
+        <input class="input-box" type="text" id="name" name="name" required>
     </div>
     <div>
         <label for="email">Email:</label>
-        <input class="input" type="email" id="email" name="email" required>
+        <input class="input-box" type="email" id="email" name="email" required>
     </div>
     <div>
         <label for="password">Password:</label>
-        <input class="input" type="password" id="password" name="password" required>
+        <input class="input-box" type="password" id="password" name="password" required>
     </div>
-    <button type="submit">Register</button>
+    <button class="btn btn-primary" type="submit">Register</button>
     
 </form>
 <a href="/login">Login</a>
