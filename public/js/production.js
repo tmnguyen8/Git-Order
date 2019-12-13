@@ -36,7 +36,7 @@ var API = {
       url: "api/orders/" + id,
       type: "DELETE"
     }).then(function() {
-        window.location.href = "/";
+        window.location.href = "/production";
     });
   }
 };
@@ -114,11 +114,11 @@ var refreshOrders = function() {
             .addClass("btn btn-danger float-right status-change")
             .text("Change Status");
 
-        // var $button = $("<button>")
-        //     .addClass("btn btn-danger float-right delete")
-        //     .text("ｘ");
+        var $deleteBtn = $("<button>")
+            .addClass("btn btn-danger float-right delete")
+            .text("Delete");
         
-        $li.append($StatusChangeBtn);
+        $li.append($StatusChangeBtn).append($deleteBtn);
 
         return $li;
     });
@@ -176,6 +176,20 @@ var handleStatusBtnClick = function() {
     refreshOrders();
   });
 };
+// Remove the example from the db and refresh the list
+var handleDeleteBtnClick = function() {
+  var idToDelete = $(this)
+    .parent()
+    .attr("data-id");
+
+  API.deleteOrder(idToDelete).then(function() {
+    refreshOrders();
+  });
+};
+
+// Add event listeners to the delete buttons
+$itemList.on("click", ".delete", handleDeleteBtnClick);
+
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
