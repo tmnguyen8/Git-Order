@@ -2,10 +2,8 @@
   line-height: 2.5;
   background: rgba(83, 46, 12, 0.548);
   color: whitesmoke;
-  width: 125%;
   height: 15%;
-  float: right;
-  margin-bottom: 1%;
+  margin: 1%;
 }
 body {
   background-image: url("./Background.jpg");
@@ -13,13 +11,15 @@ body {
     background-size: cover;
   color: red;
 }
+.header{
+  color: peachpuff;
+  text-align: center;
+  font-size: 75px;
+  margin: 1%
+}
+
 .list-group{
   width: 100%;
-  offset-position: -25%;
-}
-.order-quantity {
-  width: 80%;
-  margin-bottom: 10px;
 }
 
 .order-form {
@@ -30,5 +30,35 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.menu-image{
+  margin: 5px;
+}
+.order-quantity{
+  background: rgb(146, 118, 91);
+  border-color: peachpuff;
+  color: whitesmoke;
+  text-align: center;
+  border-radius: 10px;
+  width: 75%;
+  margin-bottom: 10px;
+}
+::placeholder{
+  color:whitesmoke
+}
+.heading{
+  color: peachpuff;
+  margin: 20px;
+}
+#menu-list {
+  column-count: 1;
+}
 
+.list-group-item {
 
+  page-break-inside: avoid;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.5em;
+  page-break-inside: avoid;
+  box-shadow: 9px 20px 10px rgba(0,0,0,0.5);
+}
