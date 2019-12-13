@@ -66,6 +66,10 @@ Create a localhost database for testing the app on your machine. The schema and 
 ## How does this work?
 1. The user has the functionality of creating an order with the quantity that he/she wants. The user can also view the orders and the status.
 
+[User Page](https://git-order.herokuapp.com/)
+
 2. The admin registers an account and login to the production portal to make changes to the order status or delete the order.
+
+[Admin Page](https://git-order.herokuapp.com/production)
 
 
