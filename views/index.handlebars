@@ -1,33 +1,51 @@
-        <div class="header">
-        <h> {{msg}}</h>
-      </div>
-    <div class="row">
-      <div class="container">
+<div class="header">
+    <img class="logo" src="./images/logo.png">
+</div>
 
-        {{!-- Displaying Menus --}}
-        <h3 class="heading">Menu:</h3>
-        <ul id="menu-list" class="list-group">
-          
-          {{#each menu}}
-          
-          {{!-- <li data-id="{{this.id}}" class="list-group-item">
-            <a href="item/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li> --}}
-          {{/each}}
-        </ul>
-        {{!-- Displaying Orders --}}
-        <h3 class="heading">Orders:</h3>
-        <ul id="item-list" class="list-group">
-          {{#each orders}}
-          <li data-id="{{this.id}}" class="list-group-item">
-          </li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
+<div class="tab container">
+  <button class="tablinks" onclick="openCity(event, 'menu')">menu</button>
+  <button class="tablinks" onclick="openCity(event, 'order')">order</button>
+</div>
+
+<div id="menu" class="tabcontent">
+      {{!-- Displaying Menus --}}
+    <h3 class="heading">Menu:</h3>
+    <ul id="menu-list" class="list-group">
+      
+      {{#each menu}}
+        {{!-- Menu items do into here --}}
+      {{/each}}
+    </ul>
+</div>
+
+<div id="order" class="tabcontent">
+      {{!-- Displaying Orders --}}
+    <h3 class="heading">Orders:</h3>
+    <ul id="item-list" class="list-group">
+      {{#each orders}}
+      <li data-id="{{this.id}}" class="list-group-item">
+      </li>
+      {{/each}}
+    </ul>
+</div>
 
 
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
