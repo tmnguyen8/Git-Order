@@ -20,6 +20,18 @@
         background: rgba(83, 46, 12, 0.548);
         color: peachpuff;
     }
+    #password{
+        margin-bottom: 2%;
+        text-align: center;
+    }
+    #email{
+        margin-bottom: 1%;
+        text-align: center;
+    }
+    #name{
+        margin-bottom: 1%;
+        text-align: center; 
+    }
 </style>
 <div class="header">
     <img class="logo" src="./images/logo.png">
@@ -28,16 +40,16 @@
 <form class="jumbotron" action="/register" method="POST">
     <h1>Register</h1>
     <div>
-        <label for="name">Name:</label>
-        <input class="input-box" type="text" id="name" name="name" required>
+        <!-- <label for="name">Name:</label> -->
+        <input class="input-box" type="text" id="name" name="name" required placeholder="Name">
     </div>
     <div>
-        <label for="email">Email:</label>
-        <input class="input-box" type="email" id="email" name="email" required>
+        <!-- <label for="email">Email:</label> -->
+        <input class="input-box" type="email" id="email" name="email" required placeholder="Email">
     </div>
     <div>
-        <label for="password">Password:</label>
-        <input class="input-box" type="password" id="password" name="password" required>
+        <!-- <label for="password">Password:</label> -->
+        <input class="input-box" type="password" id="password" name="password" required placeholder="Password">
     </div>
     <button class="btn btn-primary" type="submit">Register</button>
     

@@ -24,6 +24,14 @@
         color: red;
         font-size: 2rm;
     }
+    #email {
+        margin-bottom: 1%;
+        text-align: center;
+    }
+    #password {
+        margin-bottom: 2%;
+        text-align: center;
+    }
 </style>
 <!-- Throw any error on DOM -->
 <div class="error-msg">
@@ -38,14 +46,14 @@
 <form class="jumbotron" action="/login" method="POST">
     <h1>Login</h1>
     <div>
-        <label for="email">Email:</label>
-        <input class="input-box" type="email" id="email" name="email" required>
+        <!-- <label for="email"></label> -->
+        <input class="input-box" type="email" id="email" name="email" required placeholder="Email">
     </div>
     <div>
-        <label for="password">Password:</label>
-        <input class="input-box" type="password" id="password" name="password" required>
+        <!-- <label for="password"></label> -->
+        <input class="input-box" type="password" id="password" name="password" required placeholder="Password">
     </div>
-    <button class="btn btn-primary" type="submit">Login</button>
+    <button class="btn btn-primary" id='login-submit' type="submit">Login</button>
     
 </form>
 <a href="/register">Register</a>
