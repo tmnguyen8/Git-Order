@@ -15,3 +15,4 @@ INSERT INTO Menus (Name, Ingredients, Cost, URL) VALUES ("Roast Beef Sandwich", 
 INSERT INTO Menus (Name, Ingredients, Cost, URL) VALUES ("Chicken Quesadilla", "tortilla, cheese, chicken, roasted onions, roasted peppers, tangy spicy sauce", 4, 'https://raw.githubusercontent.com/tmnguyen8/Git-Order/master/public/images/ChickenQuesadilla.png');
 INSERT INTO Menus (Name, Ingredients, Cost, URL) VALUES ("Filet-O-Fish", "square fish, american cheese, soft bun, tarter sauce", 5, 'https://raw.githubusercontent.com/tmnguyen8/Git-Order/master/public/images/FiletOFish.png');
 INSERT INTO Menus (Name, Ingredients, Cost, URL) VALUES ("Frosty", "milk, chocolate, sugar, icecream", 3, 'https://raw.githubusercontent.com/tmnguyen8/Git-Order/master/public/images/WendysFrosty.png');
+                                                                                                           
