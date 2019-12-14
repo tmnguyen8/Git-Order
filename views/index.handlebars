@@ -5,6 +5,7 @@
 <div class="tab container">
   <button class="tablinks" onclick="openCity(event, 'menu')">menu</button>
   <button class="tablinks" onclick="openCity(event, 'order')">order</button>
+  <button onclick="openProduction()">production</button>
 </div>
 
 <div id="menu" class="tabcontent">
@@ -44,6 +45,9 @@ function openCity(evt, cityName) {
   }
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
+}
+function openProduction(){
+  window.location = "./production";
 }
 </script>
 
